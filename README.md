@@ -6,7 +6,8 @@ Denna dashboard-applikation erbjuder flera användbara funktioner, inklusive klo
 ## Installation
 1. Klona detta projekt till din dator med `git clone https://github.com/Luayasaadsson/Dashboard`.
 2. Navigera till projektmappen med `cd Dashboard`.
-3. Öppna `index.html` i din webbläsare för att använda dashboarden.
+3. För att komma åt projektet `npm run dev` och klistra in `http://localhost:5173/` i din webbläsare.
+4. Öppna `index.html` i din webbläsare för att använda dashboarden.
 
 ## Konfiguration
 

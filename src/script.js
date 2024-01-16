@@ -147,8 +147,57 @@ if (savedNotes) {
   notes.value = savedNotes;
 }
 
-// Här definierar jag en API-nyckel för att hämta väderdata från Weatherapi.com
-const apiKey = "0941b5613d4d44fcba9223717241101";
+
+// Hämtar API-nyckeln från miljövariabeln VITE_WEATHER_KEY i import.meta.env-objektet.
+const api_Key = import.meta.env.VITE_WEATHER_KEY;
+
+// Skapar ett objekt för att lagra latitud (lat) och longitud (lng) för användarens plats.
+const dataCoord = {
+  lat: null,
+  lng: null,
+};
+
+// Funktionen `getData` gör att hämta väderdata baserat på de lagrade koordinaterna.
+async function getData() {
+  // Hämtar latitud och longitud från `dataCoord`-objektet.
+  const lat = dataCoord.lat;
+  const lng = dataCoord.lng;
+
+  try {
+    // Använder Axios för att göra en HTTP GET-förfrågan till Weatherapi.com med de angivna koordinaterna.
+    const response = await axios.get(
+      `https://api.weatherapi.com/v1/forecast.json?key=${api_Key}&q=${lat},${lng}&days=3`
+    );
+
+    // Om svarskoden är 200 (OK), behandlar den hämtade väderinformationen med funktionen `updateWeatherWidget`.
+    if (response.status === 200) {
+      const data = response.data;
+      updateWeatherWidget(data);
+    } else {
+      // Kastar ett felmeddelande om förfrågan misslyckas.
+      throw new Error("Fel vid hämtning av väderdata.");
+    }
+  } catch (error) {
+    // Loggar eventuella fel till konsolen om något går fel vid hämtning av väderdata.
+    console.error(error);
+  }
+}
+
+// Funktionen `getUserLocation` använder geolocation-API för att hämta användarens aktuella plats.
+// När platsen är hämtad, anropas `getData` för att hämta väderdata för den aktuella platsen.
+function getUserLocation() {
+  navigator.geolocation.getCurrentPosition(function (position) {
+    dataCoord.lat = position.coords.latitude;
+    dataCoord.lng = position.coords.longitude;
+    getData(); // Hämtar väderdata baserat på de hämtade koordinaterna.
+  });
+}
+
+// Anropar `getUserLocation` för att starta processen med att hämta användarens plats.
+getUserLocation();
+
+// Hämtar API-nyckeln från miljövariabeln VITE_WEATHER_KEY i import.meta.env-objektet.
+const apiKey = import.meta.env.VITE_WEATHER_KEY;
 
 // Här definierar jag en funktion för att hämta väderdata för den stad man skriver in.
 function getWeatherData(city) {
@@ -183,10 +232,12 @@ function updateWeatherWidget(data) {
     widgetContent += `
       <div class="weatherDiv">
         <h3>${weekDay}</h3>
-        <p>Max temperatur: ${forecast.day.maxtemp_c} °C</p>
-        <p>Min temperatur: ${forecast.day.mintemp_c} °C</p>
-        <p>Vind: ${forecast.day.maxwind_kph} km/h</p>
+        <div class="weatherInfo">
         <img src="${forecast.day.condition.icon}" alt="${forecast.day.condition.text}">
+        <p>Max temp:<br> ${forecast.day.maxtemp_c} °C</p>
+        <p>Min temp:<br> ${forecast.day.mintemp_c} °C</p>
+        <p>Vind:<br> ${forecast.day.maxwind_kph} km/h</p>
+        </div>
       </div>`;
   }
 
@@ -299,7 +350,9 @@ function togglePlay() {
 document.getElementById('changeBackground').addEventListener('click', function() {
   const searchTerm = document.getElementById('search-term').value;
 
-  const apiKey = 'sOglukxA3l2gjCMAEN33IVJWkF5W02NBb4tzAl8Jbyk'; // Min API-nyckel från Unsplash.com
+  // Hämtar API-nyckeln från miljövariabeln VITE_UNSPLASH_KEY i import.meta.env-objektet.
+  const apiKey = import.meta.env.VITE_UNSPLASH_KEY; 
+
   let url = `https://api.unsplash.com/photos/random?client_id=${apiKey}`; // Url:en från Unsplash.com
 
  // Om det finns ett giltigt sökord, lägger det till i API-förfrågan och sparar det i localStorage.
