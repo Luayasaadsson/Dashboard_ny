@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+<!--     <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/4206a001c2.js" crossorigin="anonymous"></script>
+<!--     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+    <script type="module" src="/main.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Dashboard</title>
+  </head>
+  <body>
+    
+      <div id="clock" class="widget"></div>
+      <h1 id="title" class="editable">John Doe Dashboard</h1>
+    <div id="dashboard">
+      <div id="links">
+        <h2>Snabblänkar</h2>
+        <ul id="linksList">
+          <!-- Länkarna genereras här -->
+        </ul>
+        <button id="addLinkButton"><span class="plus">+</span> Lägg till länk</button>
+
+        <div id="linkModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="linkForm">
+              <label for="linkName">Länknamn:</label>
+              <input type="text" id="linkName" name="linkName"><br><br>
+              <label for="linkURL">Länk-URL:</label>
+              <input type="text" id="linkURL" name="linkURL"><br><br>
+              <input class="add-btn" type="submit" value="Lägg till länk">
+            </form>
+          </div>
+        </div>
+      </div>
+      
+        <div class="widget">
+          <div id="weather"></div>
+          <input class="info" type="text" id="city-input" placeholder="Sök stad">
+        </div>
+        
+        <div class="widget">
+          <h2 class="radio-titel">Radio</h2>
+          <div id="channels" class="mp3-player">
+            <!-- Kontroller för spelaren -->
+            <audio controls></audio> <!-- Lägg till ljudspelaren här -->
+          </div>
+          <div class="track-info">
+            <h4>Spårnamn</h4>
+            <p>Artistnamn</p>
+          </div>
+          <div class="controls">
+            <button class="control-btn prev-btn"><i class="fas fa-backward"></i></button>
+            <button class="control-btn play-btn"><i class="fas fa-play"></i></button>
+            <button class="control-btn next-btn"><i class="fas fa-forward"></i></button>
+          </div>
+        </div>
+        
+        
+        
+        <div class="Anteckningar">
+          <h2>Anteckningar</h2>
+          <textarea id="notes" placeholder="Skriv något här"></textarea>
+        </div>
+      </div>
+      <div class="search">
+        <input class="search-bar" type="text" id="search-term" placeholder="Skriv önskat tema">
+        <button id="changeBackground">
+          <i class="fa-solid fa-arrow-rotate-right"></i>
+          Slumpa ny bakgrund
+        </button>
+      </div>
+     
+    
+
+  </body>
+</html>
