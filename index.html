@@ -5,7 +5,7 @@
 <!--     <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/4206a001c2.js" crossorigin="anonymous"></script>
-<!--     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+<!--     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> --> <!-- Nu kör jag med import axios from "axios" i min script fil-->
     <script type="module" src="/main.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Dashboard</title>
@@ -45,7 +45,7 @@
           <h2 class="radio-titel">Radio</h2>
           <div id="channels" class="mp3-player">
             <!-- Kontroller för spelaren -->
-            <audio controls></audio> <!-- Lägg till ljudspelaren här -->
+            <audio controls></audio>
           </div>
           <div class="track-info">
             <h4>Spårnamn</h4>
@@ -57,9 +57,7 @@
             <button class="control-btn next-btn"><i class="fas fa-forward"></i></button>
           </div>
         </div>
-        
-        
-        
+      
         <div class="Anteckningar">
           <h2>Anteckningar</h2>
           <textarea id="notes" placeholder="Skriv något här"></textarea>

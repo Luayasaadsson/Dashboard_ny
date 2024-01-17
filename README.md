@@ -21,7 +21,7 @@ const apiKey = 'DIN_UNSPLASH_API_NYCKEL_HÄR';
 
 ## Översikt över olika delar
 
-![Bild på mockup som följde med i uppgiften](./Dashboard/images/mockup.png)
+![Bild på mockup som följde med i uppgiften](./images/mockup.png)
 
 ### Klockslag och Datum
 
@@ -66,4 +66,4 @@ Denna applikation innehåller även en radiosektion som ger användaren möjligh
 - **Spelarstyrning:** Användaren kan pausa och återuppta uppspelningen genom att klicka på play/pause-knappen.
 
 ## Mitt resultat
-![Bild på mitt resultat](./Dashboard/images/Resultat.png)
+![Bild på mitt resultat](./images/Resultat.png)
